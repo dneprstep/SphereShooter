@@ -1,0 +1,14 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\sphereshooter.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\sphereshootereditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\development\\sphereshooter\\definitions.sphereshooter.h",
+            "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\sphereshooter.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "SphereShooter",
+			"Path": "C:\\UnrealEngine\\SphereShooter\\Source\\SphereShooter.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "SphereShooterEditor",
+			"Path": "C:\\UnrealEngine\\SphereShooter\\Source\\SphereShooterEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

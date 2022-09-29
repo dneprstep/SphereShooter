@@ -1,0 +1,27 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\sphereshootergamemode.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\sphereshootereditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\development\\sphereshooter\\definitions.sphereshooter.h",
+            "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\sphereshootergamemode.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\sphereshootergamemode.generated.h",
+            "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\sphereshootercharacter.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\charactermovementreplication.generated.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\rootmotionsource.generated.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\character.generated.h",
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\sphereshootercharacter.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

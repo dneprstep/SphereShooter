@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\UnrealEngine\\SphereShooter\\Source\\SphereShooter\\SphereShooter.Build.cs",
+		"C:\\UnrealEngine\\SphereShooter\\Source\\SphereShooter.Target.cs",
+		"C:\\UnrealEngine\\SphereShooter\\Source\\SphereShooterEditor.Target.cs"
+	],
+	"EngineVersion": "5.0.3"
+}

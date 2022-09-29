@@ -1,0 +1,15 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\tp_weaponcomponent.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\sphereshootereditor\\debuggame\\engine\\sharedpch.engine.nonoptimized.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\debuggame\\sphereshooter\\definitions.sphereshooter.h",
+            "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\tp_weaponcomponent.h",
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\tp_weaponcomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
