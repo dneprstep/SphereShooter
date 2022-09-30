@@ -59,7 +59,7 @@ private:
 	int32 MaxHealth = 100;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-	float CollisionRadius = 50;
+	float CollisionRadiusPercent = 100;
 
 	UPROPERTY(EditAnywhere, Category = "Components")
 	FLinearColor mColor;

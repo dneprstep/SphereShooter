@@ -14,7 +14,7 @@ ABalloon::ABalloon() : isAlive(true), Health(MaxHealth)
 
 	// Add collision component
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("Collision"));
-	CollisionComponent->InitSphereRadius(CollisionRadius);
+	CollisionComponent->InitSphereRadius(CollisionRadiusPercent);
 	RootComponent = CollisionComponent;
 
 	// Add mesh component
@@ -27,7 +27,8 @@ void ABalloon::BeginPlay()
 {
 	Super::BeginPlay();
 
-	CollisionComponent->SetSphereRadius(getRadius());
+	// set balloon scale size in percent of normal
+	CollisionComponent->SetRelativeScale3D(FVector3d(1.f, 1.f, 1.f)*getRadius()/100);
 	SetMaterialColor(GetColor());
 }
 
@@ -52,12 +53,12 @@ bool ABalloon::Alive() const
 
 float ABalloon::getRadius() const
 { 
-	return CollisionRadius;
+	return CollisionRadiusPercent;
 }
 
 void ABalloon::setRadius(float radius)
 { 
-	CollisionRadius = radius;
+	CollisionRadiusPercent = radius;
 }
 
 FLinearColor ABalloon::GetColor() const

@@ -79,13 +79,60 @@ int32 ASphereShooterGameMode::SpawnBallons(TArray<FSpawnLocData>& PointsArray)
 
 		ABalloon* balloon = GetWorld()->SpawnActorDeferred<ABalloon>(BallonClass, transform, nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);
 		if (nullptr != balloon) {
+			// Set balloon color according to they objective
 			balloon->SetColor(SpawnData.isObjective ? FLinearColor::Red : FLinearColor::Black);
-			balloon->setRadius(GameData.BalloonRadius);
+
+			//set balloon radius
+			balloon->setRadius(GameData.BalloonRadiusPercent);
 			UGameplayStatics::FinishSpawningActor(balloon, transform);
 			nSpawnCount++;
+
+			//decrease size of balloon each spawn till minimum size
+			if (GameData.SphereRadiusStep > 0 && GameData.BalloonRadiusPercent > GameData.MinSphereRadius) {
+				GameData.BalloonRadiusPercent -= GameData.SphereRadiusStep;
+			}
 		}
 	}
 	return nSpawnCount;
+}
+bool ASphereShooterGameMode::CheckSpawnLocation(FVector &NewRandomPoint, const FVector& StartSpawnLocation, bool& AbovePLayer, int32 BallonsAbovePlayer)
+{
+	bool Correct = false;
+
+	//distance between new random location and start player location
+	double SpawnAndNewPointDist = FVector::Distance(StartSpawnLocation, NewRandomPoint);
+
+	// check the spawn point - inside the allowed radius
+	if (GameData.maxBalloonSpawnRadius - SpawnAndNewPointDist >= GameData.BalloonRadiusPercent) {
+		// count of balloons available to win
+		if (BallonsAbovePlayer < GameData.WinBallonsCount) {
+			if (NewRandomPoint.Z > StartSpawnLocation.Z &&   // spawn location above the player location
+				GameData.minBalloonSpawnRadius - SpawnAndNewPointDist >= GameData.BalloonRadiusPercent) // balloons should be inside the min radius
+			{
+				Correct = true;
+				AbovePLayer = true;
+			}
+		} else {
+			Correct = true;
+		}
+
+		if (Correct)
+		{
+			// Check distance to other balloons spawn location
+			for (FSpawnLocData data : SpawnLocationArray)
+			{
+				double ExistsAndNewPointDistance = FVector::Distance(data.SpawnLocation, NewRandomPoint);
+				ExistsAndNewPointDistance -= 2 * GameData.BalloonRadiusPercent;
+				// check distance between balloons
+				if (ExistsAndNewPointDistance <= GameData.DistanceBetweenBalloons) {
+					Correct = false;
+					break;
+				}
+			}
+		}
+	}
+
+	return Correct;
 }
 void ASphereShooterGameMode::GenerateSpawnLocations(TArray<FSpawnLocData>& PointsArray, FVector StartSpawnLocation)
 {
@@ -95,59 +142,31 @@ void ASphereShooterGameMode::GenerateSpawnLocations(TArray<FSpawnLocData>& Point
 	for (int32 i = 0; i < GameData.SpawnBalloonsCount;)
 	{
 		FSpawnLocData SpawnData;
-		// random vector relatively to player spawn location
+		bool AbovePLayer = false;
+
+		// random vector relatively to start spawn location
 		FVector NewRandomPoint = FVector(
 			FMath::RandRange(-GameData.maxBalloonSpawnRadius, GameData.maxBalloonSpawnRadius),
 			FMath::RandRange(-GameData.maxBalloonSpawnRadius, GameData.maxBalloonSpawnRadius),
 			FMath::RandRange(-GameData.maxBalloonSpawnRadius, GameData.maxBalloonSpawnRadius)) + StartSpawnLocation;
 
-		double SpawnAndNewPointDist = FVector::Distance(StartSpawnLocation, NewRandomPoint);
-
-		// check the spawn point - inside the allowed radius
-		if (GameData.maxBalloonSpawnRadius - SpawnAndNewPointDist >= GameData.BalloonRadius) {
-			bool BallonInRange = true;
-
-			//Generate next spawn location if number of required balloons not enough 
-			if (BallonsAbovePlayer < GameData.WinBallonsCount &&
-				(NewRandomPoint.Z < StartSpawnLocation.Z || // spawn location should be above the player location
-				GameData.minBalloonSpawnRadius - SpawnAndNewPointDist < GameData.BalloonRadius)) // balloons should be inside the min radius
+		if (CheckSpawnLocation(NewRandomPoint, StartSpawnLocation, AbovePLayer, BallonsAbovePlayer)) {
+			SpawnData.SpawnLocation = NewRandomPoint;
+			if (AbovePLayer)
 			{
-				continue;
+				BallonsAbovePlayer++;
+				SpawnData.isObjective = true;
 			}
 
-			// Check distance to other balloons spawn points
-			for (FSpawnLocData data : PointsArray)
-			{
-				double ExistsAndNewPointDistance = FVector::Distance(data.SpawnLocation, NewRandomPoint);
-				ExistsAndNewPointDistance -= 2 * GameData.BalloonRadius;
-				// check distance between balloons
-				if (ExistsAndNewPointDistance <= GameData.DistanceBetweenBalloons) {
-					SpawnTries++;
-					BallonInRange = false;
-					break;
-				}
-			}
-
-			if (BallonInRange) {
-				SpawnData.SpawnLocation = NewRandomPoint;
-
-				//mark balloon as objective to hit for win
-				if (BallonsAbovePlayer < GameData.WinBallonsCount && // dont mark more than the count
-					NewRandomPoint.Z > StartSpawnLocation.Z &&		 // spawn location should be above the player location
-					GameData.minBalloonSpawnRadius - SpawnAndNewPointDist >= GameData.BalloonRadius) // balloons should be inside the min radius
-				{
-					BallonsAbovePlayer++;
-					SpawnData.isObjective = true;
-				}
-
-				PointsArray.Add(SpawnData);
-				i++;
-				SpawnTries = 0;
-			}
-			// if cant find the place for new balloon
-			if (SpawnTries > GameData.MaxSpawnTries) {
-				break;
-			}
+			PointsArray.Add(SpawnData);
+			i++;
+			SpawnTries = 0;
+		} else {
+			SpawnTries++;
+		}
+		// if cant find the place to spawn balloon
+		if (SpawnTries > GameData.MaxSpawnTries) {
+			break;
 		}
 	}
 }
@@ -167,8 +186,10 @@ void ASphereShooterGameMode::InitStartGame()
 
 			PlayerSpawnLocation = playerPawn->GetActorLocation();
 
-			DrawDebugSphere(world, PlayerSpawnLocation, GameData.maxBalloonSpawnRadius, 32, FColor::Red, false, 20, 0, 5);
-			DrawDebugSphere(world, PlayerSpawnLocation, GameData.minBalloonSpawnRadius, 32, FColor::Green, false, 15, 0, 5);
+			if (GameData.ShowDebugSphere) {
+				DrawDebugSphere(world, PlayerSpawnLocation, GameData.maxBalloonSpawnRadius, 32, FColor::Red, false, 20, 0, 5);
+				DrawDebugSphere(world, PlayerSpawnLocation, GameData.minBalloonSpawnRadius, 32, FColor::Green, false, 15, 0, 5);
+			}
 			GenerateSpawnLocations(SpawnLocationArray, PlayerSpawnLocation);
 			SpawnBallons(SpawnLocationArray);
 		}
