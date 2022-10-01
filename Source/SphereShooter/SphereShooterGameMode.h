@@ -34,7 +34,10 @@ struct FGameData {
 	UPROPERTY(EditAnywhere, Category = "GameData", meta = (ClampMin = "0", ClampMax = "1000"))
 	float DistanceBetweenBalloons = 80.f; // min distance between balloons
 
-	UPROPERTY(EditAnywhere, Category = "GameData", meta = (ClampMin = "5", ClampMax = "500"))
+	UPROPERTY(EditAnywhere, Category = "GameData")
+	float BalloonRadius = 160.f; // balloon radius
+
+	UPROPERTY(EditAnywhere, Category = "GameData", meta = (ClampMin = "5", ClampMax = "100"))
 	float BalloonRadiusPercent = 50.f; // balloon radius in percent of normal
 
 	UPROPERTY(EditAnywhere, Category = "GameData")
@@ -50,7 +53,7 @@ struct FGameData {
 	float MinSphereRadius = 5.f; // minimum sphere radius in percent of normal
 
 	UPROPERTY(EditAnywhere, Category = "GameData", meta = (ClampMin = "0", ClampMax = "100"))
-	float SphereRadiusStep = 0.f; // balloon decrease radius step for each spawn in round
+	float SphereRadiusStepPercent = 0.f; // balloon decrease radius step for each spawn in round
 };
 
 USTRUCT(BlueprintType)

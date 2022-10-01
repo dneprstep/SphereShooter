@@ -28,7 +28,7 @@ void ABalloon::BeginPlay()
 	Super::BeginPlay();
 
 	// set balloon scale size in percent of normal
-	CollisionComponent->SetRelativeScale3D(FVector3d(1.f, 1.f, 1.f)*getRadius()/100);
+	CollisionComponent->SetRelativeScale3D(FVector3d(1.f, 1.f, 1.f)*GetPercentRadius()/100);
 	SetMaterialColor(GetColor());
 }
 
@@ -51,12 +51,12 @@ bool ABalloon::Alive() const
 	return isAlive;
 }
 
-float ABalloon::getRadius() const
+float ABalloon::GetPercentRadius() const
 { 
 	return CollisionRadiusPercent;
 }
 
-void ABalloon::setRadius(float radius)
+void ABalloon::SetPercentRadius(float radius)
 { 
 	CollisionRadiusPercent = radius;
 }
@@ -69,6 +69,11 @@ FLinearColor ABalloon::GetColor() const
 void ABalloon::SetColor(FLinearColor val)
 { 
 	mColor = val; 
+}
+
+float ABalloon::GetRadius() const
+{
+	return CollisionComponent->GetScaledSphereRadius();
 }
 
 void ABalloon::HandleDestruction()

@@ -30,11 +30,13 @@ public:
 
 	bool Alive() const;
 
-	float getRadius() const;
-	void setRadius(float radius);
+	float GetPercentRadius() const;
+	void SetPercentRadius(float radius);
 
 	FLinearColor GetColor() const;
 	void SetColor(FLinearColor val);
+
+	float GetRadius() const;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
