@@ -11,6 +11,8 @@
     <None Include="..\..\Source\SphereShooterEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -28,6 +30,12 @@
     </None>
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\HoloLens">
+      <UniqueIdentifier>{4C8DD267-CDE7-336F-8602-F5F485D22BAB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\HoloLens\HoloLensEngine.ini">
+      <Filter>Config\HoloLens</Filter>
     </None>
     <Filter Include="Source\SphereShooter">
       <UniqueIdentifier>{E2E1D9B0-580E-3E00-8F55-9AE79B46566D}</UniqueIdentifier>
@@ -80,6 +88,9 @@
     <ClCompile Include="..\..\Source\SphereShooter\Private\HealthComponent.cpp">
       <Filter>Source\SphereShooter\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SphereShooter\Private\ShooterPlayerController.cpp">
+      <Filter>Source\SphereShooter\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\SphereShooter\Public">
       <UniqueIdentifier>{6EAA4270-A242-3F4C-9DE0-2B60DE90B8E6}</UniqueIdentifier>
     </Filter>
@@ -87,6 +98,9 @@
       <Filter>Source\SphereShooter\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SphereShooter\Public\HealthComponent.h">
+      <Filter>Source\SphereShooter\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SphereShooter\Public\ShooterPlayerController.h">
       <Filter>Source\SphereShooter\Public</Filter>
     </ClInclude>
   </ItemGroup>

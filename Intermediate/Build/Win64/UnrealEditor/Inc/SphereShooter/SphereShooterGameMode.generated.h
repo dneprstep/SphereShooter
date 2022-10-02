@@ -20,19 +20,33 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<struct FGameData>();
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_58_GENERATED_BODY \
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_64_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FSpawnLocData_Statics; \
 	SPHERESHOOTER_API static class UScriptStruct* StaticStruct();
 
 
 template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<struct FSpawnLocData>();
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_SPARSE_DATA
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_RPC_WRAPPERS
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_RPC_WRAPPERS_NO_PURE_DECLS
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_EVENT_PARMS
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_CALLBACK_WRAPPERS
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_INCLASS_NO_PURE_DECLS \
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_SPARSE_DATA
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execGetRound);
+
+
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execGetRound);
+
+
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_EVENT_PARMS \
+	struct SphereShooterGameMode_eventNextRoundWIdget_Parms \
+	{ \
+		float RoundSpawnDelay; \
+	};
+
+
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_CALLBACK_WRAPPERS
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesASphereShooterGameMode(); \
 	friend struct Z_Construct_UClass_ASphereShooterGameMode_Statics; \
@@ -41,7 +55,7 @@ public: \
 	DECLARE_SERIALIZER(ASphereShooterGameMode)
 
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_INCLASS \
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_INCLASS \
 private: \
 	static void StaticRegisterNativesASphereShooterGameMode(); \
 	friend struct Z_Construct_UClass_ASphereShooterGameMode_Statics; \
@@ -50,7 +64,7 @@ public: \
 	DECLARE_SERIALIZER(ASphereShooterGameMode)
 
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_STANDARD_CONSTRUCTORS \
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	SPHERESHOOTER_API ASphereShooterGameMode(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ASphereShooterGameMode) \
@@ -63,7 +77,7 @@ private: \
 public:
 
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_ENHANCED_CONSTRUCTORS \
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	SPHERESHOOTER_API ASphereShooterGameMode(ASphereShooterGameMode&&); \
@@ -74,30 +88,30 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ASphereShooterGameMode)
 
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_72_PROLOG \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_EVENT_PARMS
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_78_PROLOG \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_EVENT_PARMS
 
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_GENERATED_BODY_LEGACY \
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_SPARSE_DATA \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_RPC_WRAPPERS \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_CALLBACK_WRAPPERS \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_INCLASS \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_STANDARD_CONSTRUCTORS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_SPARSE_DATA \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_RPC_WRAPPERS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_CALLBACK_WRAPPERS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_INCLASS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_GENERATED_BODY \
+#define FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_SPARSE_DATA \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_CALLBACK_WRAPPERS \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_INCLASS_NO_PURE_DECLS \
-	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_75_ENHANCED_CONSTRUCTORS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_SPARSE_DATA \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_CALLBACK_WRAPPERS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_INCLASS_NO_PURE_DECLS \
+	FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_81_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -67,6 +67,10 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_DistanceBetweenBalloons;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_BalloonRadius_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_BalloonRadius;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_BalloonRadiusPercent_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_BalloonRadiusPercent;
@@ -79,6 +83,10 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 #endif
 		static const UECodeGen_Private::FIntPropertyParams NewProp_Rounds;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RoundRestartDelay_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RoundRestartDelay;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ShowDebugSphere_MetaData[];
 #endif
 		static void NewProp_ShowDebugSphere_SetBit(void* Obj);
@@ -88,9 +96,9 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_MinSphereRadius;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_SphereRadiusStep_MetaData[];
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_SphereRadiusStepPercent_MetaData[];
 #endif
-		static const UECodeGen_Private::FFloatPropertyParams NewProp_SphereRadiusStep;
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_SphereRadiusStepPercent;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UECodeGen_Private::FStructParams ReturnStructParams;
 	};
@@ -178,13 +186,22 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_DistanceBetweenBalloons = { "DistanceBetweenBalloons", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, DistanceBetweenBalloons), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_DistanceBetweenBalloons_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_DistanceBetweenBalloons_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadiusPercent_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadius_MetaData[] = {
 		{ "Category", "GameData" },
-		{ "ClampMax", "500" },
-		{ "ClampMin", "5" },
 		{ "Comment", "// min distance between balloons\n" },
 		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
 		{ "ToolTip", "min distance between balloons" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadius = { "BalloonRadius", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, BalloonRadius), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadius_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadius_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadiusPercent_MetaData[] = {
+		{ "Category", "GameData" },
+		{ "ClampMax", "100" },
+		{ "ClampMin", "5" },
+		{ "Comment", "// balloon radius\n" },
+		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
+		{ "ToolTip", "balloon radius" },
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadiusPercent = { "BalloonRadiusPercent", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, BalloonRadiusPercent), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadiusPercent_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadiusPercent_MetaData)) };
@@ -207,6 +224,15 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 #endif
 	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_Rounds = { "Rounds", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, Rounds), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_Rounds_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_Rounds_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FGameData_Statics::NewProp_RoundRestartDelay_MetaData[] = {
+		{ "Category", "GameData" },
+		{ "Comment", "// current round\n" },
+		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
+		{ "ToolTip", "current round" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_RoundRestartDelay = { "RoundRestartDelay", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, RoundRestartDelay), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_RoundRestartDelay_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_RoundRestartDelay_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FGameData_Statics::NewProp_ShowDebugSphere_MetaData[] = {
 		{ "Category", "GameData" },
 		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
@@ -227,7 +253,7 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_MinSphereRadius = { "MinSphereRadius", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, MinSphereRadius), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_MinSphereRadius_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_MinSphereRadius_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStep_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStepPercent_MetaData[] = {
 		{ "Category", "GameData" },
 		{ "ClampMax", "100" },
 		{ "ClampMin", "0" },
@@ -236,7 +262,7 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 		{ "ToolTip", "minimum sphere radius in percent of normal" },
 	};
 #endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStep = { "SphereRadiusStep", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, SphereRadiusStep), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStep_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStep_MetaData)) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStepPercent = { "SphereRadiusStepPercent", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FGameData, SphereRadiusStepPercent), METADATA_PARAMS(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStepPercent_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStepPercent_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FGameData_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SpawnBalloonsCount,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_WinBallonsCount,
@@ -245,12 +271,14 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FGameData>()
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_minBalloonSpawnRadius,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_RateBalloonSpawnRadius,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_DistanceBetweenBalloons,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadius,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_BalloonRadiusPercent,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_MaxSpawnTries,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_Rounds,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_RoundRestartDelay,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_ShowDebugSphere,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_MinSphereRadius,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStep,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameData_Statics::NewProp_SphereRadiusStepPercent,
 	};
 	const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FGameData_Statics::ReturnStructParams = {
 		(UObject* (*)())Z_Construct_UPackage__Script_SphereShooter,
@@ -325,33 +353,85 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FSpawnLocData>()
 		}
 		return Z_Registration_Info_UScriptStruct_SpawnLocData.InnerSingleton;
 	}
-	static FName NAME_ASphereShooterGameMode_GameOver = FName(TEXT("GameOver"));
-	void ASphereShooterGameMode::GameOver()
+	DEFINE_FUNCTION(ASphereShooterGameMode::execGetRound)
 	{
-		ProcessEvent(FindFunctionChecked(NAME_ASphereShooterGameMode_GameOver),NULL);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->GetRound();
+		P_NATIVE_END;
+	}
+	static FName NAME_ASphereShooterGameMode_NextRoundWIdget = FName(TEXT("NextRoundWIdget"));
+	void ASphereShooterGameMode::NextRoundWIdget(float RoundSpawnDelay)
+	{
+		SphereShooterGameMode_eventNextRoundWIdget_Parms Parms;
+		Parms.RoundSpawnDelay=RoundSpawnDelay;
+		ProcessEvent(FindFunctionChecked(NAME_ASphereShooterGameMode_NextRoundWIdget),&Parms);
 	}
 	void ASphereShooterGameMode::StaticRegisterNativesASphereShooterGameMode()
 	{
+		UClass* Class = ASphereShooterGameMode::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "GetRound", &ASphereShooterGameMode::execGetRound },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
-	struct Z_Construct_UFunction_ASphereShooterGameMode_GameOver_Statics
+	struct Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics
 	{
+		struct SphereShooterGameMode_eventGetRound_Parms
+		{
+			int32 ReturnValue;
+		};
+		static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SphereShooterGameMode_eventGetRound_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::NewProp_ReturnValue,
+	};
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ASphereShooterGameMode_GameOver_Statics::Function_MetaDataParams[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ASphereShooterGameMode_GameOver_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASphereShooterGameMode, nullptr, "GameOver", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ASphereShooterGameMode_GameOver_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ASphereShooterGameMode_GameOver_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_ASphereShooterGameMode_GameOver()
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASphereShooterGameMode, nullptr, "GetRound", nullptr, nullptr, sizeof(Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::SphereShooterGameMode_eventGetRound_Parms), Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ASphereShooterGameMode_GetRound()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ASphereShooterGameMode_GameOver_Statics::FuncParams);
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ASphereShooterGameMode_GetRound_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics
+	{
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RoundSpawnDelay;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::NewProp_RoundSpawnDelay = { "RoundSpawnDelay", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SphereShooterGameMode_eventNextRoundWIdget_Parms, RoundSpawnDelay), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::NewProp_RoundSpawnDelay,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASphereShooterGameMode, nullptr, "NextRoundWIdget", nullptr, nullptr, sizeof(SphereShooterGameMode_eventNextRoundWIdget_Parms), Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -376,10 +456,6 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FSpawnLocData>()
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_PlayerSpawnLocation;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_RestartDelay_MetaData[];
-#endif
-		static const UECodeGen_Private::FFloatPropertyParams NewProp_RestartDelay;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_GameData_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_GameData;
@@ -392,7 +468,8 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FSpawnLocData>()
 		(UObject* (*)())Z_Construct_UPackage__Script_SphereShooter,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_ASphereShooterGameMode_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_ASphereShooterGameMode_GameOver, "GameOver" }, // 230636089
+		{ &Z_Construct_UFunction_ASphereShooterGameMode_GetRound, "GetRound" }, // 3576331225
+		{ &Z_Construct_UFunction_ASphereShooterGameMode_NextRoundWIdget, "NextRoundWIdget" }, // 557990566
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASphereShooterGameMode_Statics::Class_MetaDataParams[] = {
@@ -417,23 +494,15 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FSpawnLocData>()
 #endif
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_PlayerSpawnLocation = { "PlayerSpawnLocation", nullptr, (EPropertyFlags)0x0040000000020001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASphereShooterGameMode, PlayerSpawnLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_PlayerSpawnLocation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_PlayerSpawnLocation_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_RestartDelay_MetaData[] = {
-		{ "Category", "SphereShooterGameMode" },
-		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
-	};
-#endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_RestartDelay = { "RestartDelay", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASphereShooterGameMode, RestartDelay), METADATA_PARAMS(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_RestartDelay_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_RestartDelay_MetaData)) };
-#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData_MetaData[] = {
 		{ "Category", "GameData" },
 		{ "ModuleRelativePath", "SphereShooterGameMode.h" },
 	};
 #endif
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData = { "GameData", nullptr, (EPropertyFlags)0x0040000000010001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASphereShooterGameMode, GameData), Z_Construct_UScriptStruct_FGameData, METADATA_PARAMS(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData_MetaData)) }; // 566681622
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData = { "GameData", nullptr, (EPropertyFlags)0x0040000000010001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASphereShooterGameMode, GameData), Z_Construct_UScriptStruct_FGameData, METADATA_PARAMS(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData_MetaData)) }; // 1481120377
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ASphereShooterGameMode_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_BallonClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_PlayerSpawnLocation,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_RestartDelay,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASphereShooterGameMode_Statics::NewProp_GameData,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ASphereShooterGameMode_Statics::StaticCppClassTypeInfo = {
@@ -473,13 +542,13 @@ template<> SPHERESHOOTER_API UScriptStruct* StaticStruct<FSpawnLocData>()
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_Statics::ScriptStructInfo[] = {
-		{ FGameData::StaticStruct, Z_Construct_UScriptStruct_FGameData_Statics::NewStructOps, TEXT("GameData"), &Z_Registration_Info_UScriptStruct_GameData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FGameData), 566681622U) },
+		{ FGameData::StaticStruct, Z_Construct_UScriptStruct_FGameData_Statics::NewStructOps, TEXT("GameData"), &Z_Registration_Info_UScriptStruct_GameData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FGameData), 1481120377U) },
 		{ FSpawnLocData::StaticStruct, Z_Construct_UScriptStruct_FSpawnLocData_Statics::NewStructOps, TEXT("SpawnLocData"), &Z_Registration_Info_UScriptStruct_SpawnLocData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FSpawnLocData), 3716277512U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ASphereShooterGameMode, ASphereShooterGameMode::StaticClass, TEXT("ASphereShooterGameMode"), &Z_Registration_Info_UClass_ASphereShooterGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASphereShooterGameMode), 550011753U) },
+		{ Z_Construct_UClass_ASphereShooterGameMode, ASphereShooterGameMode::StaticClass, TEXT("ASphereShooterGameMode"), &Z_Registration_Info_UClass_ASphereShooterGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASphereShooterGameMode), 2753504010U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_4131251811(TEXT("/Script/SphereShooter"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_1962549731(TEXT("/Script/SphereShooter"),
 		Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_Statics::ClassInfo),
 		Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SphereShooter_Source_SphereShooter_SphereShooterGameMode_h_Statics::ScriptStructInfo),
 		nullptr, 0);

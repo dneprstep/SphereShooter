@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
+#include "Blueprint/UserWidget.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -147,3 +148,4 @@ bool ASphereShooterCharacter::EnableTouchscreenMovement(class UInputComponent* P
 	
 	return false;
 }
+

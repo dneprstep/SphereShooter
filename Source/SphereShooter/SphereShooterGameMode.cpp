@@ -47,9 +47,6 @@ void ASphereShooterGameMode::ActorDied(AActor* DeadActor)
 		// destroy all balloons if marked balloons exists
 		if (nullptr == data)
 		{
-			// show game over screen
-			GameOver();
-
 			TArray<AActor*> BalloonsArray;
 			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABalloon::StaticClass(), BalloonsArray);
 
@@ -60,11 +57,12 @@ void ASphereShooterGameMode::ActorDied(AActor* DeadActor)
 
 			// reset array with spawning locations for balloons
 			SpawnLocationArray.Reset();
-			//next round
-			GameData.Rounds++;
+
+			// show game over screen
+			NextRoundWIdget(GameData.RoundRestartDelay);
 
 			//Timer to respawn balloons
-			GetWorldTimerManager().SetTimer(RestartTimer, this, &ASphereShooterGameMode::InitStartGame, RestartDelay);
+			GetWorldTimerManager().SetTimer(RestartTimer, this, &ASphereShooterGameMode::InitStartGame, GameData.RoundRestartDelay);
 		}
 	}
 }
@@ -134,6 +132,10 @@ bool ASphereShooterGameMode::CheckSpawnLocation(FVector &NewRandomPoint, const F
 
 	return Correct;
 }
+int32 ASphereShooterGameMode::GetRound()
+{
+	return GameData.Rounds;
+}
 void ASphereShooterGameMode::GenerateSpawnLocations(TArray<FSpawnLocData>& PointsArray, FVector StartSpawnLocation)
 {
 	int32 SpawnTries = 0; // tries to spawn balloons 
@@ -164,8 +166,13 @@ void ASphereShooterGameMode::GenerateSpawnLocations(TArray<FSpawnLocData>& Point
 		} else {
 			SpawnTries++;
 		}
-		// if cant find the place to spawn balloon
+		// restart level if cant find the place to spawn balloon
 		if (SpawnTries > GameData.MaxSpawnTries) {
+			APlayerController *PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+			if (nullptr != PlayerController)
+			{
+				PlayerController->RestartLevel();
+			}
 			break;
 		}
 	}
@@ -198,6 +205,9 @@ void ASphereShooterGameMode::InitStartGame()
 			}
 			GenerateSpawnLocations(SpawnLocationArray, PlayerSpawnLocation);
 			SpawnBallons(SpawnLocationArray);
+
+			//next round
+			GameData.Rounds++;
 		}
 	}
 

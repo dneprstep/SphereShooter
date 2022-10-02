@@ -4,6 +4,8 @@
 #include "HealthComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "../SphereShooterGameMode.h"
+#include "ShooterPlayerController.h"
+#include "Balloon.h"
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
@@ -44,6 +46,12 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 	if (Health <= 0)
 	{
 		if (nullptr != GameMode && nullptr != DamagedActor) {
+			ABalloon* BalloonDestroyed = Cast<ABalloon>(DamagedActor);
+			if (nullptr != BalloonDestroyed)
+			{
+				AShooterPlayerController* PlayerCharacter = Cast<AShooterPlayerController>(Instigator);
+				PlayerCharacter->BalloonHit();
+			}
 			GameMode->ActorDied(DamagedActor);
 		}
 	}

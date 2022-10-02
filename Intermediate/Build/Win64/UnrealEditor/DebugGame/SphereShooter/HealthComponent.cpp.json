@@ -22,7 +22,11 @@
             "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
             "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
             "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
-            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\sphereshootergamemode.generated.h"
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\sphereshootergamemode.generated.h",
+            "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\public\\shooterplayercontroller.h",
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\shooterplayercontroller.generated.h",
+            "c:\\unrealengine\\sphereshooter\\source\\sphereshooter\\public\\balloon.h",
+            "c:\\unrealengine\\sphereshooter\\intermediate\\build\\win64\\unrealeditor\\inc\\sphereshooter\\balloon.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

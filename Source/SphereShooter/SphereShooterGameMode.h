@@ -47,6 +47,9 @@ struct FGameData {
 	int32 Rounds = 0; // current round
 
 	UPROPERTY(EditAnywhere, Category = "GameData")
+	float RoundRestartDelay = 3.f;
+
+	UPROPERTY(EditAnywhere, Category = "GameData")
 	bool ShowDebugSphere = true; // show debug spheres for spawn radius
 
 	UPROPERTY(EditAnywhere, Category = "GameData")
@@ -88,7 +91,10 @@ public:
 	TSubclassOf<ABalloon> BallonClass;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void GameOver();
+	void NextRoundWIdget(float RoundSpawnDelay);
+
+	UFUNCTION(BlueprintPure)
+	int32 GetRound();
 
 private:
 	UPROPERTY(VisibleAnywhere)
@@ -96,9 +102,6 @@ private:
 
 	//Balloons spawn locations for current round
 	TArray<FSpawnLocData> SpawnLocationArray;
-
-	UPROPERTY(EditAnywhere)
-	float RestartDelay = 3.f;
 
 	UPROPERTY(EditDefaultsOnly, Category = "GameData")
 	FGameData GameData;
